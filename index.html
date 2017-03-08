@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman Game</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- <script type="text/javascript" src="logic3.js"></script> -->
+
+</head>
+
+<body>
+
+	<!-- Pseudo Code for Hangman Game
+
+	- Pick a word
+	- Computer randomnly chooses a word from an array of options
+	-break down into individual charactarers
+	- User picks a letter
+	- Check whether user input matches a letter in the array
+	- if letter does match, print a letter to the array of blanks. Replaces "_" with guessed letter
+	- if letter does not match, substract from possible guess attempts (minus minus)
+	 -->
+
+			<!-- ROW 1 -->
+	 <div class="row">
+
+	 	<div class="col-md-2"></div>
+
+	 	<div class="col-md-8">
+	 		<div class="jumbotron" style="border-radius: 5px">
+	 			<div class="container">
+	 				<h1>Hello User!</h1>
+	 				<h2>Welcome to a Simple Hangman Game</h2>
+	 				<p>The rules are as follows...</p>
+	 					<ul>
+	 						<li>
+	 							You get 10 chances to correctly guess
+								all the letters in the <strong>mystery word.</strong>
+	 						</li>
+	 						<li>
+	 							If you win, an alert will notify you of the word
+	 							you guessed. You will also get the chance to play again.
+	 						</li>
+	 						<li>
+	 							If you lose, you will also get an alert reminding you of your failure, but you will also get the chance to play again!
+	 						</li>
+
+	 					</ul>
+
+	 					<br>
+	 					<h6>That is all for now... Fairly simple. Do look forward for a better and updated version in the near future.</h6>
+
+	 			</div>
+
+	 		</div>
+	 	</div>
+
+	 	<div class="col-md-2"></div>
+
+	 </div>
+
+		 <!-- ROW 2 -->
+		<!--   <div class="row">
+		 	<div class="col-md-1"></div>
+
+		 	<div class="col-md-10">
+		 		<div class="panel panel-default">
+		 			<div class="panel-heading">
+		 				<h3 class="panel-title">Chosen Word</h3>
+		 			</div>
+		 			<div class="panel-body" id="blanks">
+		 				Word will appear here
+		 			</div>
+		 		</div>
+		 	</div>
+
+		 	<div class="col-md-1"></div>
+
+		 </div> -->
+	
+	<!-- ROW 3 -->
+	<div class="row">
+
+		<div class="col-md-2"></div>
+
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">What word is this...?</h3>
+				</div>
+				<div class="panel-body" id="lettersGuessed">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-2"></div>
+
+	</div>
+
+	<!-- <div id="section"></div> -->
+
+	<!-- ROW 4 -->
+	<div class="row">
+
+		<div class="col-md-2"></div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Letters already guessed</h3>
+				</div>
+				<div class="panel-body" id="wrongGuesses">
+					
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Number of Guesses Left</h3>
+				</div>
+				<div class="panel-body" id="numGuesses">
+					10
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-2"></div>
+
+	</div>
+
+	<!-- ROW 5 -->
+	<div class="row">
+
+		<div class="col-md-2"></div>
+
+		<!-- <div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Number of Guesses Left</h3>
+				</div>
+				<div class="panel-body" id="numGuesses">
+					10
+				</div>
+			</div>
+		</div> -->
+		
+		<div class="col-md-2"></div>
+
+	</div>
+
+
+	<!-- ROW 6 -->
+	<div class="row">
+
+		<div class="col-md-2"></div>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Number of Wins</h3>
+				</div>
+				<div class="panel-body" id="numberWins">
+					0
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Number of Losses</h3>
+				</div>
+				<div class="panel-body" id="numberLosses">
+					0
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-2"></div>
+
+	</div>
+
+	<!-- ROW 7 -->
+	<div class="row">
+
+		<div class="col-md-2"></div>
+
+		<!-- <div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Number of Losses</h3>
+				</div>
+				<div class="panel-body" id="numberLosses">
+					0
+				</div>
+			</div>
+		</div> -->
+		
+		<div class="col-md-2"></div>
+
+	</div>
+
+	
+
+	<script type="text/javascript" src="assets/javascript/logic3.js"></script>
+
+	
+</body>
+</html>
